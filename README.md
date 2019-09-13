@@ -1,4 +1,6 @@
-目前已经通过jitpack。使用gradle的小伙伴们可以通过如下配置获取该UI框架库
+这是一个基于JME3和同系列UI框架的通用项目框架。
+
+目前已经通过jitpack。使用gradle的小伙伴们可以配置如下：
  
    ```gradle
    repositories { 
