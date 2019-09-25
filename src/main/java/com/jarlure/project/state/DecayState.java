@@ -3,6 +3,7 @@ package com.jarlure.project.state;
 import com.jarlure.project.bean.entitycomponent.Decay;
 import com.jme3.app.Application;
 import com.jme3.app.state.BaseAppState;
+import com.simsilica.es.Entity;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntitySet;
 
@@ -48,11 +49,11 @@ public class DecayState extends BaseAppState {
         if (decaySet.isEmpty()) return;
         t += tpf;
         if (t < threshold) return;
-        decaySet.forEach(entity -> {
+        for (Entity entity:decaySet){
             Decay decay = entity.get(Decay.class);
             if (decay.getTime() < 0) ed.removeEntity(entity.getId());
             else decay.setTime(decay.getTime() - t);
-        });
+        }
         t = 0;
     }
 

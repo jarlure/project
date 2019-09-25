@@ -3,6 +3,7 @@ package com.jarlure.project.state;
 import com.jarlure.project.bean.entitycomponent.Delay;
 import com.jme3.app.Application;
 import com.jme3.app.state.BaseAppState;
+import com.simsilica.es.Entity;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntitySet;
 
@@ -45,13 +46,13 @@ public class DelayState extends BaseAppState {
     public void update(float tpf) {
         delaySet.applyChanges();
         if (delaySet.isEmpty()) return;
-        delaySet.forEach(entity -> {
+        for (Entity entity:delaySet){
             Delay delay = entity.get(Delay.class);
             if (delay.getTime() < 0) {
                 delay.getCallback().onDone(entity.getId());
                 ed.removeEntity(entity.getId());
             } else delay.setTime(delay.getTime() - tpf);
-        });
+        }
     }
 
 }
