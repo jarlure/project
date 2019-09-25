@@ -66,11 +66,11 @@ public class DefaultEntityDataState extends BaseAppState implements EntityDataSt
 
         private AtomicLong entityId;
 
-        public DefaultEntityIdGenerator() {
+        private DefaultEntityIdGenerator() {
             this(0);
         }
 
-        public DefaultEntityIdGenerator(long initialValue) {
+        private DefaultEntityIdGenerator(long initialValue) {
             this.entityId = new AtomicLong(initialValue);
         }
 
@@ -79,11 +79,11 @@ public class DefaultEntityDataState extends BaseAppState implements EntityDataSt
             return entityId.getAndIncrement();
         }
 
-        public long getCurrentValue() {
+        private long getCurrentValue() {
             return entityId.get();
         }
 
-        public void setCurrentValue(long initValue) {
+        private void setCurrentValue(long initValue) {
             entityId.set(initValue);
         }
 
