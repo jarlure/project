@@ -28,8 +28,7 @@ public interface ScreenState {
      *
      * @param layout 布局
      */
-    default void setLayout(Layout layout) {
-    }
+    void setLayout(Layout layout);
 
     /**
      * 判断当前ScreenState是否已启用
@@ -50,24 +49,21 @@ public interface ScreenState {
      *
      * @param bundle 数据包
      */
-    default void loadData(Bundle bundle) {
-    }
+    void loadData(Bundle bundle) ;
 
     /**
      * 更新ScreenState
      *
      * @param tpf 秒每帧
      */
-    default void update(float tpf) {
-    }
+    void update(float tpf) ;
 
     /**
      * 保存数据
      *
      * @param bundle 数据包
      */
-    default void saveData(Bundle bundle) {
-    }
+    void saveData(Bundle bundle) ;
 
     /**
      * 清除ScreenState

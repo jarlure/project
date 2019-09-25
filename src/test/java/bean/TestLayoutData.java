@@ -1,4 +1,4 @@
-package layoutdata;
+package bean;
 
 import com.jarlure.ui.system.AssetManager;
 import com.jarlure.ui.system.InputManager;
@@ -6,15 +6,15 @@ import com.jarlure.ui.system.UIRenderState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.asset.plugins.FileLocator;
 
-public class LayoutDataTest extends SimpleApplication {
+public class TestLayoutData extends SimpleApplication {
 
     public static void main(String[] args) {
-        LayoutDataTest app = new LayoutDataTest();
+        TestLayoutData app = new TestLayoutData();
         app.setShowSettings(false);
         app.start();
     }
 
-    public LayoutDataTest() {
+    public TestLayoutData() {
         super(new UIRenderState());
     }
 
@@ -25,7 +25,7 @@ public class LayoutDataTest extends SimpleApplication {
 
         assetManager.registerLocator("C:\\Users\\Administrator\\Desktop", FileLocator.class);
         Object obj = AssetManager.loadAsset("tt.j3o");
-        System.out.println();
+        System.out.println(obj.getClass());
     }
 
 }

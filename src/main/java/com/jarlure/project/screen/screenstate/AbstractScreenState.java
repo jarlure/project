@@ -1,5 +1,7 @@
 package com.jarlure.project.screen.screenstate;
 
+import com.jarlure.project.bean.Bundle;
+import com.jarlure.project.layout.Layout;
 import com.jarlure.project.screen.Screen;
 import com.jarlure.project.screen.screenstate.operation.Operation;
 import com.jme3.app.Application;
@@ -36,6 +38,11 @@ public abstract class AbstractScreenState implements ScreenState{
     }
 
     @Override
+    public void setLayout(Layout layout) {
+
+    }
+
+    @Override
     public final boolean isEnabled() {
         return enabled;
     }
@@ -56,10 +63,18 @@ public abstract class AbstractScreenState implements ScreenState{
     }
 
     @Override
+    public void loadData(Bundle bundle) {
+    }
+
+    @Override
     public void update(float tpf) {
         for (Operation operation:operations){
             operation.update(tpf);
         }
+    }
+
+    @Override
+    public void saveData(Bundle bundle) {
     }
 
     protected void onDisable() {

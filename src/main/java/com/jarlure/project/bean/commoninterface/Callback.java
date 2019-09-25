@@ -10,12 +10,4 @@ public interface Callback<T> {
      */
     void onDone(T obj, Object... extra);
 
-    /**
-     * 如果任务执行出错，可以调用该函数通知任务失败并将状态吗作为参数传进回调函数中。
-     *
-     * @param statuscode 错误状态码
-     */
-    default void onFailed(int statuscode) {
-    }
-
 }

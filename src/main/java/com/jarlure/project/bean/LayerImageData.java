@@ -80,8 +80,9 @@ public class LayerImageData implements Savable, Cloneable {
     }
 
     /**
-     * 获得图层的顶边位置垂直坐标y值
-     * @return  图层的顶边位置垂直坐标y值
+     * 获取图层的顶边位置垂直坐标y值
+     *
+     * @return 图层的顶边位置垂直坐标y值
      */
     public int getTop() {
         return this.top;
@@ -89,15 +90,17 @@ public class LayerImageData implements Savable, Cloneable {
 
     /**
      * 设置图层的顶边位置垂直坐标y值
-     * @param top   图层的顶边位置垂直坐标y值
+     *
+     * @param top 图层的顶边位置垂直坐标y值
      */
     public void setTop(int top) {
         this.top = top;
     }
 
     /**
-     * 获得图层的左边位置水平坐标x值
-     * @return  图层的左边位置水平坐标x值
+     * 获取图层的左边位置水平坐标x值
+     *
+     * @return 图层的左边位置水平坐标x值
      */
     public int getLeft() {
         return this.left;
@@ -105,15 +108,17 @@ public class LayerImageData implements Savable, Cloneable {
 
     /**
      * 设置图层的左边位置水平坐标x值
-     * @param left  图层的左边位置水平坐标x值
+     *
+     * @param left 图层的左边位置水平坐标x值
      */
     public void setLeft(int left) {
         this.left = left;
     }
 
     /**
-     * 获得图层的底边位置垂直坐标y值
-     * @return  图层的底边位置垂直坐标y值
+     * 获取图层的底边位置垂直坐标y值
+     *
+     * @return 图层的底边位置垂直坐标y值
      */
     public int getBottom() {
         return this.bottom;
@@ -121,15 +126,17 @@ public class LayerImageData implements Savable, Cloneable {
 
     /**
      * 设置图层的底边位置垂直坐标y值
-     * @param bottom    图层的底边位置垂直坐标y值
+     *
+     * @param bottom 图层的底边位置垂直坐标y值
      */
     public void setBottom(int bottom) {
         this.bottom = bottom;
     }
 
     /**
-     * 获得图层的右边位置水平坐标x值
-     * @return  图层的右边位置水平坐标x值
+     * 获取图层的右边位置水平坐标x值
+     *
+     * @return 图层的右边位置水平坐标x值
      */
     public int getRight() {
         return this.right;
@@ -137,6 +144,7 @@ public class LayerImageData implements Savable, Cloneable {
 
     /**
      * 设置图层的右边位置水平坐标x值
+     *
      * @param right 图层的右边位置水平坐标x值
      */
     public void setRight(int right) {
@@ -144,8 +152,9 @@ public class LayerImageData implements Savable, Cloneable {
     }
 
     /**
-     * 获得图片
-     * @return  图片
+     * 获取图片
+     *
+     * @return 图片
      */
     public Image getImg() {
         return this.img;
@@ -153,23 +162,26 @@ public class LayerImageData implements Savable, Cloneable {
 
     /**
      * 设置图片
-     * @param img   图片
+     *
+     * @param img 图片
      */
     public void setImg(Image img) {
         this.img = img;
     }
 
     /**
-     * 获得图层的宽度
-     * @return  图层的宽
+     * 获取图层的宽度
+     *
+     * @return 图层的宽
      */
     public int getWidth() {
         return this.right - this.left;
     }
 
     /**
-     * 获得图层的高度
-     * @return  图层的高
+     * 获取图层的高度
+     *
+     * @return 图层的高
      */
     public int getHeight() {
         return this.top - this.bottom;
@@ -182,7 +194,8 @@ public class LayerImageData implements Savable, Cloneable {
 
     /**
      * 浅拷贝。共用同一个名称和图片引用
-     * @return  该图层数据的复制品
+     *
+     * @return 该图层数据的复制品
      */
     public LayerImageData clone() {
         try {

@@ -1,7 +1,7 @@
 package com.jarlure.project.state;
 
 import com.jarlure.project.bean.commoninterface.Record;
-import com.jarlure.ui.property.common.EnumPropertyListener;
+import com.jarlure.ui.property.common.CustomPropertyListener;
 import com.jme3.app.Application;
 import com.jme3.app.state.BaseAppState;
 
@@ -17,7 +17,7 @@ public class RecordState extends BaseAppState {
     private final int maxRecordLength = 100;
     private Record record[];
     private int pointer, startIndex, undoTime;
-    private List<EnumPropertyListener> listenerList;
+    private List<CustomPropertyListener> listenerList;
 
     /**
      * 该AppState用于保存操作记录和执行回滚操作。
@@ -123,7 +123,7 @@ public class RecordState extends BaseAppState {
      * 添加操作监听器。该监听器可以得到 添加记录、撤销、重做 等操作的通知
      * @param listener  监听器
      */
-    public void addOperationListener(EnumPropertyListener listener) {
+    public void addOperationListener(CustomPropertyListener listener) {
         if (listenerList == null) listenerList = new ArrayList<>();
         listenerList.add(listener);
     }
@@ -132,14 +132,14 @@ public class RecordState extends BaseAppState {
      * 移除给定的监听器
      * @param listener  给定的监听器
      */
-    public void removeOperationListener(EnumPropertyListener listener) {
+    public void removeOperationListener(CustomPropertyListener listener) {
         if (listenerList == null) return;
         listenerList.remove(listener);
     }
 
     private void stateChanged(Operation operation) {
         if (listenerList == null) return;
-        for (EnumPropertyListener listener : listenerList) {
+        for (CustomPropertyListener listener : listenerList) {
             listener.propertyChanged(operation, null, null);
         }
     }

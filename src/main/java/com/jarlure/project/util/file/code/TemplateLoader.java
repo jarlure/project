@@ -1,6 +1,5 @@
 package com.jarlure.project.util.file.code;
 
-
 import com.jarlure.project.util.file.txt.TextFileReader;
 import com.jarlure.project.util.file.txt.TextFileWriter;
 

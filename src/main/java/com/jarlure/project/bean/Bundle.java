@@ -12,8 +12,8 @@ public class Bundle implements Savable {
 
     private HashMap<String, Object> data;
 
-    public boolean exist(String name){
-        if (data==null || data.isEmpty())return false;
+    public boolean exist(String name) {
+        if (data == null || data.isEmpty()) return false;
         return data.containsKey(name);
     }
 
@@ -30,14 +30,14 @@ public class Bundle implements Savable {
     @Override
     public void read(JmeImporter im) {
         InputCapsule capsule = im.getCapsule(this);
-        SavableHelper.read(this,capsule,null);
+        SavableHelper.read(this, capsule, null);
     }
 
     @Override
     public void write(JmeExporter ex) {
-        if (this.data==null || this.data.isEmpty()) return;
+        if (this.data == null || this.data.isEmpty()) return;
         OutputCapsule capsule = ex.getCapsule(this);
-        SavableHelper.write(this,capsule,null);
+        SavableHelper.write(this, capsule, null);
     }
 
 }

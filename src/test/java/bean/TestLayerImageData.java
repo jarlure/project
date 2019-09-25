@@ -1,10 +1,10 @@
-package layerimagedata;
+package bean;
 
 import com.jarlure.project.bean.LayerImageData;
 import com.jarlure.ui.util.ImageHandler;
 import com.jme3.texture.Image;
 
-public class LayerImageDataTest {
+public class TestLayerImageData {
 
     public static void main(String[] args) {
         Image img = ImageHandler.createEmptyImage(100,100);

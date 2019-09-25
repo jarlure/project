@@ -27,6 +27,11 @@ public class VaryUIComponent extends Property<UIComponent> implements UIComponen
     }
 
     @Override
+    public void scale(float percent) {
+        scale(percent, percent);
+    }
+
+    @Override
     public void scale(float x_percent, float y_percent) {
         if (value == null) return;
         value.scale(x_percent, y_percent);

@@ -17,13 +17,15 @@ public abstract class AbstractLayout implements Layout {
 
     /**
      * 获取引用外部布局的组件的名称-外部布局类映射。
-     * @return  引用外部布局的组件的名称-外部布局类映射
+     *
+     * @return 引用外部布局的组件的名称-外部布局类映射
      */
-    public abstract Map<String,Class<Layout>> getLinkedComponentLayoutMap();
+    public abstract Map<String, Class<Layout>> getLinkedComponentLayoutMap();
 
     /**
      * 加载布局数据，初始化布局
-     * @param data  布局数据
+     *
+     * @param data 布局数据
      */
     public final void loadLayout(LayoutData data) {
         layoutWidth = data.getLayoutWidth();
@@ -34,8 +36,9 @@ public abstract class AbstractLayout implements Layout {
 
     /**
      * 创建布局上的组件
-     * @param layerImageData    图层数据
-     * @return  布局根结点
+     *
+     * @param layerImageData 图层数据
+     * @return 布局根结点
      */
     protected abstract UINode createComponent(List<LayerImageData> layerImageData);
 
@@ -45,17 +48,17 @@ public abstract class AbstractLayout implements Layout {
     protected abstract void configureUIComponent();
 
     @Override
-    public float getLayoutWidth(){
+    public float getLayoutWidth() {
         return layoutWidth;
     }
 
     @Override
-    public float getLayoutHeight(){
+    public float getLayoutHeight() {
         return layoutHeight;
     }
 
     @Override
-    public UINode getLayoutNode(){
+    public UINode getLayoutNode() {
         return layoutNode;
     }
 

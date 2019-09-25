@@ -13,7 +13,7 @@ import com.jarlure.ui.util.ImageHandler;
 import com.jme3.math.Vector3f;
 import com.jme3.texture.Image;
 
-public class DefaultUIFactory implements UIFactory {
+public class DefaultUIFactory extends AbstractUIFactory {
 
     //类型
     public static final String Node = "Node";
@@ -345,9 +345,6 @@ public class DefaultUIFactory implements UIFactory {
 
             ChildrenProperty childrenProperty = panel.get(ChildrenProperty.class);
             childrenProperty.attachChild(children);
-//            panel.get(RangeProperty.class).setRange(side[0],side[1],side[2],side[3]);
-//            ElementProperty elementProperty = panel.get(ElementProperty.class);
-//            elementProperty.add(children);
 
             return panel;
         }

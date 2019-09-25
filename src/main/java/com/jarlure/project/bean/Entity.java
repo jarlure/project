@@ -44,10 +44,10 @@ public class Entity {
     }
 
     /**
-     * 获得给定属性的默认值
+     * 获取给定属性的默认值
      *
      * @param key 给定的属性
-     * @param <T>
+     * @param <T> 任意类型
      * @return 该属性的默认值
      */
     public <T> T getDefaultValue(Object key) {
@@ -133,7 +133,7 @@ public class Entity {
     }
 
     /**
-     * 获得所有数据的索引值
+     * 获取所有数据的索引值
      *
      * @return 所有数据的索引值
      */
@@ -204,11 +204,12 @@ public class Entity {
     }
 
     /**
-     * 获得给定索引值对应数据的给定属性的值
+     * 获取给定索引值对应数据的给定属性的值
+     *
      * @param index 给定的索引值
      * @param key   给定的属性
-     * @param <T>
-     * @return  给定索引值对应数据的给定属性的值
+     * @param <T>   任意类型
+     * @return 给定索引值对应数据的给定属性的值
      */
     public <T> T getValue(int index, Object key) {
         Map item = itemMap.get(index);

@@ -5,7 +5,7 @@ import com.jarlure.ui.component.UIComponent;
 import com.jarlure.ui.component.Vision;
 import com.jme3.scene.Spatial;
 
-public class DynamicUIFactory implements UIFactory {
+public class DynamicUIFactory extends AbstractUIFactory {
 
     private UIFactory factory;
     private String type;
