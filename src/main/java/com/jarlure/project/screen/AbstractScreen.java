@@ -180,7 +180,7 @@ public abstract class AbstractScreen implements Screen {
     }
 
     @Override
-    public final void skipTo(Class<Screen> screenClass) {
+    public final <T extends Screen> void skipTo(Class<T> screenClass) {
         Screen screen = getState(screenClass);
         if (screen == null || this == screen) return;
         this.saveData();

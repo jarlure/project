@@ -30,7 +30,7 @@ public interface Screen extends AppState {
      * 切换至另一UI场景
      * @param screenClass   另一UI场景的类
      */
-    void skipTo(Class<Screen> screenClass);
+    <T extends Screen> void skipTo(Class<T> screenClass);
 
     /**
      * 通过类获取对应类实例。例如获取RecordState实例
