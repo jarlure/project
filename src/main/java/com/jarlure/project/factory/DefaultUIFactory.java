@@ -177,9 +177,9 @@ public class DefaultUIFactory extends AbstractUIFactory {
                 public float getX(float percent) {
                     AABB box = progressBar.get(AABB.class);
                     switch (dir) {
-                        case RIGHT:
-                            percent = 1 - percent;
                         case LEFT:
+                            percent = 1 - percent;
+                        case RIGHT:
                             return box.getXLeft() + percent * box.getWidth();
                         case UP:
                         case DOWN:
@@ -334,8 +334,7 @@ public class DefaultUIFactory extends AbstractUIFactory {
         }
 
         if (type.equals(Panel)) {
-            float[] side;
-            {
+            float[] side;{
                 UIComponent background = Helper.find(children, BACKGROUND);
                 if (background != null) side = Helper.getMinXYandMaxXY(background);
                 else side = Helper.getMinXYandMaxXY(children);

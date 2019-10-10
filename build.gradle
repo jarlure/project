@@ -19,8 +19,8 @@ repositories {
 def jme3 = [v:'3.1.0-stable', g:'org.jmonkeyengine']
 dependencies {
     implementation "${jme3.g}:jme3-core:${jme3.v}"
-//    implementation "${jme3.g}:jme3-lwjgl:${jme3.v}"
-//    implementation "${jme3.g}:jme3-desktop:${jme3.v}"
+    implementation "${jme3.g}:jme3-lwjgl:${jme3.v}"
+    implementation "${jme3.g}:jme3-desktop:${jme3.v}"
     implementation 'com.github.jarlure:ui:1.0.1'
     implementation "com.simsilica:zay-es:1.2.1"
 }

@@ -1,4 +1,4 @@
-package factory;
+package factory.defaultuifactory;
 
 import com.jarlure.project.bean.LayerImageData;
 import com.jarlure.project.factory.DefaultUIFactory;
@@ -14,10 +14,10 @@ import com.jarlure.ui.util.ImageHandler;
 import com.jme3.app.SimpleApplication;
 import com.jme3.texture.Image;
 
-public class TestDefaultUIFactory extends SimpleApplication {
+public class TestPicture extends SimpleApplication {
 
     public static void main(String[] args) {
-        TestDefaultUIFactory app = new TestDefaultUIFactory();
+        TestPicture app = new TestPicture();
         app.setShowSettings(false);
         app.start();
     }
@@ -28,7 +28,7 @@ public class TestDefaultUIFactory extends SimpleApplication {
     private UIComponent button;
     private UIComponent dot9Button;
 
-    public TestDefaultUIFactory() {
+    public TestPicture() {
         super(new UIRenderState());
     }
 
