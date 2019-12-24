@@ -175,7 +175,7 @@ public abstract class AbstractScreen implements Screen {
     @Override
     public void update(float tpf) {
         for (ScreenState screenState : screenStates) {
-            screenState.update(tpf);
+            if (screenState.isEnabled()) screenState.update(tpf);
         }
     }
 

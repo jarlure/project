@@ -52,7 +52,6 @@ public class StringHandler {
         return str.substring(0, str.length() - 1);
     }
 
-
     public static String toString(String[] text, String... prefix_interval_suffix) {
         return toString(Arrays.asList(text), prefix_interval_suffix);
     }

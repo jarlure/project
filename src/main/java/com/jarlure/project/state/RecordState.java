@@ -11,11 +11,11 @@ import java.util.List;
 public class RecordState extends BaseAppState {
 
     public enum Operation {
-        ADD_RECORD, UNDO, REDO,
+        ADD_RECORD, UNDO, REDO, CLEAR_ALL_RECORDS
     }
 
-    private final int maxRecordLength = 100;
-    private Record record[];
+    private final int maxRecordLength;
+    private Record[] record;
     private int pointer, startIndex, undoTime;
     private List<CustomPropertyListener> listenerList;
 
@@ -23,6 +23,11 @@ public class RecordState extends BaseAppState {
      * 该AppState用于保存操作记录和执行回滚操作。
      */
     public RecordState() {
+        this(100);
+    }
+
+    public RecordState(int maxRecordLength){
+        this.maxRecordLength=maxRecordLength;
         record = new Record[maxRecordLength + 1];
         startIndex = pointer = 1;
     }
@@ -41,6 +46,18 @@ public class RecordState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+    }
+
+    /**
+     * 清除所有记录。
+     */
+    public void clearAllRecords(){
+        for (int i=0;i<record.length;i++){
+            record[i]=null;
+        }
+        startIndex = pointer = 1;
+        undoTime=0;
+        stateChanged(Operation.CLEAR_ALL_RECORDS);
     }
 
     /**
@@ -135,6 +152,13 @@ public class RecordState extends BaseAppState {
     public void removeOperationListener(CustomPropertyListener listener) {
         if (listenerList == null) return;
         listenerList.remove(listener);
+    }
+
+    /**
+     * 移除所有监听器
+     */
+    public void removeAllOperationListeners(){
+        listenerList.clear();
     }
 
     private void stateChanged(Operation operation) {
