@@ -8,7 +8,7 @@
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         compile 'com.github.jarlure:project:1.0.1'
+         compile 'com.github.jarlure:project:1.0.3'
    }
    ```  
 
