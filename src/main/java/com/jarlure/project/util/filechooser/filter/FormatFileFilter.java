@@ -8,7 +8,7 @@ public class FormatFileFilter extends FileFilter {
 
     /**
      * 用于swing文件选择器的文件过滤器。该过滤器会过滤掉不是指定格式的文件
-     * @param formatName    指定格式。例如：.png
+     * @param formatName    指定格式。例如：png
      */
     public FormatFileFilter(String... formatName) {
         format = formatName;
@@ -27,7 +27,7 @@ public class FormatFileFilter extends FileFilter {
     public String getDescription() {
         StringBuilder builder = new StringBuilder();
         for (String format : format) {
-            builder.append('.').append(format).append(';');
+            builder.append("*.").append(format).append(';');
         }
         return builder.substring(0, builder.length() - 1);
     }

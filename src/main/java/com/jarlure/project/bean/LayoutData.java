@@ -87,7 +87,7 @@ public class LayoutData implements Savable {
         Helper.unpackImageReference(imgList, bundle);
     }
 
-    private static class Helper {
+    private final static class Helper {
 
         private static void packImageReference(List<LayerImageData> layerImgDataList, Bundle bundle) {
             if (layerImgDataList == null || layerImgDataList.isEmpty() || bundle == null) return;

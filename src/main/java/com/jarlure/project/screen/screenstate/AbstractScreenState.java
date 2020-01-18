@@ -15,7 +15,7 @@ public abstract class AbstractScreenState implements ScreenState{
     protected Screen screen;
     protected List<Operation> operations=new ArrayList<>(0);
     private boolean initialized;
-    private boolean enabled=true;
+    private boolean enabled;
 
     @Override
     public final boolean isInitialized() {
@@ -26,6 +26,7 @@ public abstract class AbstractScreenState implements ScreenState{
     public final void initialize(Application app, Screen screen) {
         this.app=app;
         this.screen=screen;
+        this.enabled=true;
         initialize();
         initialized=true;
         if (enabled) onEnable();

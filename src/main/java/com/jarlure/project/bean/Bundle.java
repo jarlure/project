@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * 数据包。用于保存当前系统数据
  */
-public class Bundle implements Savable {
+public final class Bundle implements Savable {
 
     private HashMap<String, Object> data;
 

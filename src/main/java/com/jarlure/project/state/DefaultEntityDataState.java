@@ -9,7 +9,7 @@ import com.simsilica.es.base.EntityIdGenerator;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class DefaultEntityDataState extends BaseAppState implements EntityDataState {
+public final class DefaultEntityDataState extends BaseAppState implements EntityDataState {
 
     private DefaultEntityIdGenerator idGenerator;
     private EntityData ed;

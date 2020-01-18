@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SavableHelper {
+public final class SavableHelper {
 
     private static final Logger LOG = Logger.getLogger(SavableHelper.class.getName());
     private static final String KEY = ".K";

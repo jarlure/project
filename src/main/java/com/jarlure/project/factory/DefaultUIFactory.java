@@ -13,7 +13,7 @@ import com.jarlure.ui.util.ImageHandler;
 import com.jme3.math.Vector3f;
 import com.jme3.texture.Image;
 
-public class DefaultUIFactory extends AbstractUIFactory {
+public final class DefaultUIFactory extends AbstractUIFactory {
 
     //类型
     public static final String Node = "Node";
