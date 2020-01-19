@@ -49,7 +49,7 @@ public final class DelayState extends BaseAppState {
         for (Entity entity:delaySet){
             Delay delay = entity.get(Delay.class);
             if (delay.getTime() < 0) {
-                delay.getCallback().onDone(entity.getId());
+                delay.getCallback().apply();
                 ed.removeEntity(entity.getId());
             } else delay.setTime(delay.getTime() - tpf);
         }

@@ -1,6 +1,6 @@
 package com.jarlure.project.state;
 
-import com.jarlure.project.bean.commoninterface.Record;
+import com.jarlure.project.bean.Record;
 import com.jarlure.ui.property.common.CustomPropertyListener;
 import com.jme3.app.Application;
 import com.jme3.app.state.BaseAppState;

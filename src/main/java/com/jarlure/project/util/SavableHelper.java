@@ -1,7 +1,7 @@
 package com.jarlure.project.util;
 
-import com.jarlure.project.bean.commoninterface.Filter;
-import com.jarlure.project.bean.commoninterface.Interceptor;
+import com.jarlure.project.lambda.BooleanFunction3Obj;
+import com.jarlure.project.lambda.ObjectFunction3Obj;
 import com.jarlure.ui.util.ImageHandler;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.OutputCapsule;
@@ -53,7 +53,7 @@ public final class SavableHelper {
      * @param interceptor 拦截器。你可以在拦截器中拦截你不想自动设置的值。拦截器能够得到的参数依次为：变量值（Object）、
      *                    成员变量名（String）、成员变量字段（Field）
      */
-    public static void read(Object obj, InputCapsule capsule, Interceptor interceptor) {
+    public static void read(Object obj, InputCapsule capsule, BooleanFunction3Obj<Object,String,Field> interceptor) {
         if (obj == null) return;
         for (Field field : obj.getClass().getDeclaredFields()) {
             if (Modifier.isStatic(field.getModifiers())) continue;//过滤掉静态成员变量
@@ -63,7 +63,7 @@ public final class SavableHelper {
             if (varyValue == null) continue;
             boolean accessible = field.isAccessible();
             field.setAccessible(true);
-            if (interceptor == null || interceptor.pass(varyValue, varyName, field)) {
+            if (interceptor == null || interceptor.apply(varyValue, varyName, field)) {
                 try {
                     field.set(obj, varyValue);
                 } catch (IllegalAccessException e) {
@@ -83,7 +83,7 @@ public final class SavableHelper {
      * @param filter  过滤器。你可以在过滤器中过滤你不想自动保存的值。过滤器能够得到的参数依次为：变量值（Object）、
      *                成员变量名（String）、成员变量字段（Field）
      */
-    public static void write(Object obj, OutputCapsule capsule, Filter filter) {
+    public static void write(Object obj, OutputCapsule capsule, ObjectFunction3Obj<Object,String,Field,Object> filter) {
         if (obj == null) return;
         for (Field field : obj.getClass().getDeclaredFields()) {
             if (Modifier.isStatic(field.getModifiers())) continue;//过滤掉静态成员变量
@@ -98,7 +98,7 @@ public final class SavableHelper {
                 e.printStackTrace();
             }
             field.setAccessible(accessible);
-            if (filter != null) varyValue = filter.filter(varyValue, varyName, field);
+            if (filter != null) varyValue = filter.apply(varyValue, varyName, field);
             if (varyValue == null) continue;
 
             write(capsule, varyName, varyValue);

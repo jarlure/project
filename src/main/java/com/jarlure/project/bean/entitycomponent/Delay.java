@@ -1,15 +1,14 @@
 package com.jarlure.project.bean.entitycomponent;
 
-import com.jarlure.project.bean.commoninterface.Callback;
+import com.jarlure.project.lambda.VoidFunction;
 import com.simsilica.es.EntityComponent;
-import com.simsilica.es.EntityId;
 
 public class Delay implements EntityComponent {
 
     private float time;
-    private Callback<EntityId> callback;
+    private VoidFunction callback;
 
-    public Delay(Callback<EntityId> callback) {
+    public Delay(VoidFunction callback) {
         this.callback = callback;
     }
 
@@ -20,12 +19,12 @@ public class Delay implements EntityComponent {
      * @param time     方法延时。DelayState每次都会检查并减少该值。当该值<0时执行回调函数并删除该标记关联的实体
      * @param callback 回调函数
      */
-    public Delay(float time, Callback<EntityId> callback) {
+    public Delay(float time, VoidFunction callback) {
         this.callback = callback;
         this.time = time;
     }
 
-    public Callback<EntityId> getCallback() {
+    public VoidFunction getCallback() {
         return callback;
     }
 

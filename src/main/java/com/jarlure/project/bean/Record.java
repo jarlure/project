@@ -1,4 +1,4 @@
-package com.jarlure.project.bean.commoninterface;
+package com.jarlure.project.bean;
 
 public interface Record {
 
