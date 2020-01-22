@@ -61,16 +61,21 @@ public class RecordState extends BaseAppState {
     }
 
     /**
-     * 撤销上一步操作。
+     * 撤销上一步操作
+     *
+     * @return 如果成功撤销上一步操作则返回true，否则返回false
      */
-    public void undo() {
-        if (isUndoDisabled()) return;
+    public boolean undo() {
+        if (isUndoDisabled()) return false;
         int index = checkIndex(pointer - 1);
         Record record = this.record[index];
-        record.undo();
-        pointer = index;
-        undoTime++;
-        stateChanged(Operation.UNDO);
+        if (record.undo()){
+            pointer = index;
+            undoTime++;
+            stateChanged(Operation.UNDO);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -84,15 +89,20 @@ public class RecordState extends BaseAppState {
 
     /**
      * 重做上一步操作
+     *
+     * @return 如果成功重做上一步操作则返回true，否则返回false
      */
-    public void redo() {
-        if (isRedoDisabled()) return;
-        undoTime--;
+    public boolean redo() {
+        if (isRedoDisabled()) return false;
         int index = pointer;
-        pointer = checkIndex(pointer + 1);
         Record record = this.record[index];
-        record.redo();
-        stateChanged(Operation.REDO);
+        if (record.redo()){
+            undoTime--;
+            pointer = checkIndex(pointer + 1);
+            stateChanged(Operation.REDO);
+            return true;
+        }
+        return false;
     }
 
     /**

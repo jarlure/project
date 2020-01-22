@@ -4,12 +4,16 @@ public interface Record {
 
     /**
      * 撤销
+     *
+     * @return 成功返回true；否则返回false
      */
-    void undo();
+    boolean undo();
 
     /**
      * 重做
+     *
+     * @return 成功返回true；否则返回false
      */
-    void redo();
+    boolean redo();
 
 }
