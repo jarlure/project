@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public final class Entity {
+public class Entity {
 
     private final IntMap<Map> itemMap;
     private Map defaultValue;

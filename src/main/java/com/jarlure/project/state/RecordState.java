@@ -124,7 +124,9 @@ public class RecordState extends BaseAppState {
         clearUndoOperationRecord();
 
         if (!isOnTop(record)) {
-            if (recordIsFull()) {
+            if (isFull()) {
+                Record oldRecord = this.record[startIndex];
+                if (oldRecord!=null) oldRecord.release();
                 startIndex = checkIndex(startIndex + 1);
             }
             this.record[pointer] = record;
@@ -186,7 +188,7 @@ public class RecordState extends BaseAppState {
         undoTime = 0;
     }
 
-    private boolean recordIsFull() {
+    private boolean isFull() {
         return checkIndex(pointer + 1) == startIndex;
     }
 

@@ -16,4 +16,9 @@ public interface Record {
      */
     boolean redo();
 
+    /**
+     * 释放资源
+     */
+    void release();
+
 }

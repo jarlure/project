@@ -7,7 +7,7 @@ import com.simsilica.es.Entity;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntitySet;
 
-public final class DelayState extends BaseAppState {
+public class DelayState extends BaseAppState {
 
     private EntityData ed;
     private EntitySet delaySet;

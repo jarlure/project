@@ -5,7 +5,7 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
 
-public final class StringHandler {
+public class StringHandler {
 
     /**
      * 统计输入字符串的字节数。中文字符为双字节，其他字符为单字节
