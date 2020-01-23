@@ -86,6 +86,8 @@ public abstract class AbstractScreenState implements ScreenState{
 
     @Override
     public void cleanup() {
+        setEnabled(false);
+        initialized=false;
         for (Operation operation:operations){
             operation.cleanup();
         }

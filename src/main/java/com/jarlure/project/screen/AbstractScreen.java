@@ -204,15 +204,14 @@ public abstract class AbstractScreen implements Screen {
      */
     protected void onDisable() {
         for (ScreenState screenState : screenStates) {
-            if (screenState.isEnabled()) screenState.setEnabled(false);
             screenState.cleanup();
         }
     }
 
     @Override
     public void cleanup() {
-        if (visible) setVisible(false);
-        if (enabled) setEnabled(false);
+        setVisible(false);
+        setEnabled(false);
         layout = null;
         screenStates.clear();
         initialized = false;
