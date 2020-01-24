@@ -11,5 +11,4 @@
          compile 'com.github.jarlure:project:1.0.3'
    }
    ```  
-
 [![](https://jitpack.io/v/jarlure/project.svg)](https://jitpack.io/#jarlure/project)
