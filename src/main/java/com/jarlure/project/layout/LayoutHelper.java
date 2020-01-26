@@ -130,17 +130,23 @@ public class LayoutHelper {
                 for (int n = 0; n < number.length; n++) {
                     data[n] = layerImgData.get(number[n]);
                 }
-                component = create(factory, type, name, data);
+                if (data.length==0) component=create(factory,type,name);
+                else component = create(factory, type, name, data);
             } else {
                 UIComponent[] childrenComponent = new UIComponent[children.length];
                 for (int j = 0; j < childrenComponent.length; j++) {
                     childrenComponent[j] = childrenProperty.getChildByName(children[j]);
                 }
-                component = create(factory, type, name, childrenComponent);
+                if (childrenComponent.length==0) component = create(factory,type,name);
+                else component = create(factory, type, name, childrenComponent);
             }
             childrenProperty.attachChild(component);
         }
         return node;
+    }
+
+    protected UIComponent create(UIFactory factory, String type, String name){
+        return create(factory,type,name,null);
     }
 
     /**

@@ -20,7 +20,7 @@ public abstract class AbstractLayout implements Layout {
      *
      * @return 引用外部布局的组件的名称-外部布局类映射
      */
-    public abstract Map<String, Class<Layout>> getLinkedComponentLayoutMap();
+    public abstract Map<String, Class<? extends Layout>> getLinkedComponentLayoutMap();
 
     /**
      * 加载布局数据，初始化布局
