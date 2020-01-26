@@ -67,9 +67,9 @@ public abstract class AbstractScreen implements Screen {
         LayoutData data = (LayoutData) AssetManager.loadAsset(getLayoutDataURL(layoutClass));
         ((AbstractLayout) layout).loadLayout(data);
 
-        Map<String, Class<Layout>> linkedComponentLayoutMap = ((AbstractLayout) layout).getLinkedComponentLayoutMap();
+        Map<String, Class<? extends Layout>> linkedComponentLayoutMap = ((AbstractLayout) layout).getLinkedComponentLayoutMap();
         if (linkedComponentLayoutMap != null) {
-            for (Map.Entry<String, Class<Layout>> entry : linkedComponentLayoutMap.entrySet()) {
+            for (Map.Entry<String, Class<? extends Layout>> entry : linkedComponentLayoutMap.entrySet()) {
                 UIComponent linkedComponent = layout.getComponent(entry.getKey());
                 Layout linkedLayout = loadLayout(entry.getValue());
                 List<UIComponent> childrenList = linkedLayout.getLayoutNode().get(ChildrenProperty.class).value;
