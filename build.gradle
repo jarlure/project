@@ -21,7 +21,7 @@ dependencies {
     implementation "${jme3.g}:jme3-core:${jme3.v}"
 //    implementation "${jme3.g}:jme3-lwjgl:${jme3.v}"
 //    implementation "${jme3.g}:jme3-desktop:${jme3.v}"
-    implementation 'com.github.jarlure:ui:1.0.3'
+    implementation 'com.github.jarlure:ui:v1.0.3'
     implementation "com.simsilica:zay-es:1.2.1"
 }
 
