@@ -65,6 +65,9 @@ public abstract class AbstractScreenState implements ScreenState{
 
     @Override
     public void loadData(Bundle bundle) {
+        for (Operation operation:operations){
+            operation.loadData(bundle);
+        }
     }
 
     @Override
@@ -76,6 +79,9 @@ public abstract class AbstractScreenState implements ScreenState{
 
     @Override
     public void saveData(Bundle bundle) {
+        for (Operation operation:operations){
+            operation.saveData(bundle);
+        }
     }
 
     protected void onDisable() {

@@ -29,6 +29,24 @@ public abstract class AbstractScreen implements Screen {
     private boolean visible;
     protected final List<ScreenState> screenStates = new ArrayList<>();
 
+    /**
+     * 获取子类关联的布局类。该方法由子类实现
+     *
+     * @return 子类关联的布局类
+     */
+    protected abstract Class<? extends Layout> getLayoutClass();
+
+    /**
+     * 获取数据包
+     * @return  数据包
+     */
+    protected abstract Bundle getBundle();
+
+    /**
+     * 由子类实现的初始化。此时布局已经加载完毕，UI场景仍处于未初始化和禁用状态
+     */
+    protected abstract void initialize();
+
     @Override
     public final boolean isInitialized() {
         return initialized;
@@ -42,13 +60,6 @@ public abstract class AbstractScreen implements Screen {
         initialized = true;
         if (enabled) onEnable();
     }
-
-    /**
-     * 获取子类关联的布局类。该方法由子类实现
-     *
-     * @return 子类关联的布局类
-     */
-    protected abstract Class<? extends Layout> getLayoutClass();
 
     /**
      * 加载布局。
@@ -88,15 +99,8 @@ public abstract class AbstractScreen implements Screen {
      */
     protected String getLayoutDataURL(Class layoutClass) {
         String layoutName = layoutClass.getSimpleName();
-        StringBuilder builder = new StringBuilder(15 + layoutName.length());
-        builder.append("Interface/").append(layoutName).append("/").append(layoutName).append(".j3o");
-        return builder.toString();
+        return "Interface/" + layoutName + "/" + layoutName + ".j3o";
     }
-
-    /**
-     * 由子类实现的初始化。此时布局已经加载完毕，UI场景仍处于未初始化和禁用状态
-     */
-    protected abstract void initialize();
 
     @Override
     public boolean isEnabled() {
@@ -134,12 +138,6 @@ public abstract class AbstractScreen implements Screen {
             screenState.loadData(bundle);
         }
     }
-
-    /**
-     * 获取数据包
-     * @return  数据包
-     */
-    protected abstract Bundle getBundle();
 
     @Override
     public final boolean isVisible() {

@@ -215,10 +215,10 @@ public class LayerImageData implements Savable, Cloneable {
                 left = pos[2];
                 right = pos[3];
             }
-            byte[][] img = capsule.readByteArray2D("img", null);
+            byte[] img = capsule.readByteArray("img", null);
             if (img != null) {
                 int[] size = capsule.readIntArray("size", null);
-                this.img = ImageHandler.decompressImg(img, size[0], size[1]);
+                this.img = ImageHandler.decompress(img, size[0], size[1]);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -234,7 +234,7 @@ public class LayerImageData implements Savable, Cloneable {
             }
             if (img != null) {
                 int[] size = new int[]{img.getWidth(), img.getHeight()};
-                byte[][] img = ImageHandler.compressImg(this.img);
+                byte[] img = ImageHandler.compress(this.img,0.7f);
                 capsule.write(size, "size", null);
                 capsule.write(img, "img", null);
             }

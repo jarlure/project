@@ -445,7 +445,7 @@ public class DefaultUIFactory extends AbstractUIFactory {
                 Image img = buttonData.getImg();
                 if (img == null) img = ImageHandler.createEmptyImage(buttonData.getWidth(), buttonData.getHeight());
                 else img = ImageHandler.clone(img);
-                ImageHandler.drawCombine(img, textData.getImg(), textData.getLeft() - buttonData.getLeft(), textData.getBottom() - buttonData.getBottom());
+                ImageHandler.drawCombine(img,textData.getLeft() - buttonData.getLeft(), textData.getBottom() - buttonData.getBottom(), textData.getImg());
                 buttonData.setImg(img);
                 newData[i] = buttonData;
             }
@@ -454,17 +454,23 @@ public class DefaultUIFactory extends AbstractUIFactory {
 
         private static LayerImageData[] combineToOneBigImage(LayerImageData[] data) {
             LayerImageData bigImgData = new LayerImageData(data[0]);
-            for (LayerImageData layerImageData : data) {
-                if (layerImageData.getTop() > bigImgData.getTop()) bigImgData.setTop(layerImageData.getTop());
-                if (layerImageData.getBottom() < bigImgData.getBottom())
-                    bigImgData.setBottom(layerImageData.getBottom());
-                if (layerImageData.getLeft() < bigImgData.getLeft()) bigImgData.setLeft(layerImageData.getLeft());
-                if (layerImageData.getRight() > bigImgData.getRight()) bigImgData.setRight(layerImageData.getRight());
+            for (LayerImageData data_i : data) {
+                if (data_i.getTop() > bigImgData.getTop()) bigImgData.setTop(data_i.getTop());
+                if (data_i.getBottom() < bigImgData.getBottom())
+                    bigImgData.setBottom(data_i.getBottom());
+                if (data_i.getLeft() < bigImgData.getLeft()) bigImgData.setLeft(data_i.getLeft());
+                if (data_i.getRight() > bigImgData.getRight()) bigImgData.setRight(data_i.getRight());
             }
             Image bigImg = ImageHandler.createEmptyImage(bigImgData.getWidth(), bigImgData.getHeight());
-            for (LayerImageData datai : data) {
-                if (datai.getImg() == null) continue;
-                ImageHandler.drawCombine(bigImg, datai.getImg(), datai.getLeft() - bigImgData.getLeft(), datai.getBottom() - bigImgData.getBottom());
+            Image img;
+            for (LayerImageData data_i : data) {
+                img=data_i.getImg();
+                if (img == null) continue;
+                if (ImageHandler.existAlpha(img)){
+                    ImageHandler.drawCombine(bigImg, data_i.getLeft() - bigImgData.getLeft(), data_i.getBottom() - bigImgData.getBottom(), img);
+                }else{
+                    ImageHandler.drawCut(bigImg, data_i.getLeft() - bigImgData.getLeft(), data_i.getBottom() - bigImgData.getBottom(), img,0,0,img.getWidth(),img.getHeight());
+                }
             }
             bigImgData.setImg(bigImg);
             return new LayerImageData[]{bigImgData};
@@ -492,9 +498,9 @@ public class DefaultUIFactory extends AbstractUIFactory {
 
         private static float[] getMinXYandMaxXY(UIComponent... children) {
             float minX = Integer.MAX_VALUE;
-            float maxX = 0;
-            float minY = minX;
-            float maxY = minX;
+            float maxX = -1;
+            float minY = Integer.MAX_VALUE;
+            float maxY = -1;
             float x, y;
             for (UIComponent component : children) {
                 AABB box = component.get(AABB.class);

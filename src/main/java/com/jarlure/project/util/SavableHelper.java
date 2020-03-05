@@ -180,13 +180,11 @@ public class SavableHelper {
             }
             //Image
             else if (Image.class.isAssignableFrom(clazz)) {
-                byte[][] imgValue = capsule.readByteArray2D(name + VALUE, null);
+                byte[] imgValue = capsule.readByteArray(name + VALUE, null);
                 if (imgValue == null) return null;
                 int[] size = capsule.readIntArray(name + SIZE, null);
                 if (size == null) return null;
-                Image img = ImageHandler.decompressImg(imgValue, size[0], size[1]);
-                if (img == null) return null;
-                return img;
+                return ImageHandler.decompress(imgValue, size[0], size[1]);
             }
             //Savable
             else if (Savable.class.isAssignableFrom(clazz)) {
@@ -306,7 +304,7 @@ public class SavableHelper {
             else if (data instanceof Image) {
                 Image img = (Image) data;
                 capsule.write(new int[]{img.getWidth(), img.getHeight()}, name + SIZE, null);
-                byte[][] imgValue = ImageHandler.compressImg(img);
+                byte[] imgValue = ImageHandler.compress(img,0.7f);
                 capsule.write(imgValue, name + VALUE, null);
             }
             //Savable

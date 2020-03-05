@@ -18,11 +18,11 @@ repositories {
 
 def jme3 = [v:'3.1.0-stable', g:'org.jmonkeyengine']
 dependencies {
-    implementation "${jme3.g}:jme3-core:${jme3.v}"
-//    implementation "${jme3.g}:jme3-lwjgl:${jme3.v}"
-//    implementation "${jme3.g}:jme3-desktop:${jme3.v}"
-    implementation 'com.github.jarlure:ui:1.0.4'
-    implementation "com.simsilica:zay-es:1.2.1"
+    compileOnly "${jme3.g}:jme3-core:${jme3.v}"
+    testRuntimeOnly "${jme3.g}:jme3-lwjgl:${jme3.v}"
+    compileOnly "${jme3.g}:jme3-desktop:${jme3.v}"
+    compileOnly 'com.github.jarlure:ui:2.0.1'
+    compileOnly "com.simsilica:zay-es:1.2.1"
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {

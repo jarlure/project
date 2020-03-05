@@ -4,6 +4,7 @@ import com.jarlure.project.bean.LayerImageData;
 import com.jarlure.project.factory.DefaultUIFactory;
 import com.jarlure.project.factory.UIFactory;
 import com.jarlure.ui.component.UIComponent;
+import com.jarlure.ui.property.PercentProperty;
 import com.jarlure.ui.system.AssetManager;
 import com.jarlure.ui.system.InputManager;
 import com.jarlure.ui.system.UIRenderState;
@@ -45,6 +46,8 @@ public class TestProgressBarAndSlider extends SimpleApplication {
         UIComponent slider = factory.create(DefaultUIFactory.Slider,"slider",progressBar,button);
 
         stateManager.getState(UIRenderState.class).attachChildToNode(slider);
+
+        slider.get(PercentProperty.class).setPercent(0.5f);
     }
 
 }

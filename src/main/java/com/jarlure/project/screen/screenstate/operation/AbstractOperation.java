@@ -1,6 +1,8 @@
 package com.jarlure.project.screen.screenstate.operation;
 
-public abstract class AbstractOperation implements Operation{
+import com.jarlure.project.bean.Bundle;
+
+public abstract class AbstractOperation implements Operation {
 
     @Override
     public void initialize() {
@@ -13,7 +15,17 @@ public abstract class AbstractOperation implements Operation{
     }
 
     @Override
+    public void loadData(Bundle bundle) {
+
+    }
+
+    @Override
     public void update(float tpf) {
+
+    }
+
+    @Override
+    public void saveData(Bundle bundle) {
 
     }
 

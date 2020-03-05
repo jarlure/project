@@ -217,7 +217,9 @@ public class Entity {
         if (defaultValue == null) {
             return (T) item.get(key);
         } else {
-            return (T) item.getOrDefault(key, defaultValue.get(key));
+            Object result = item.get(key);
+            if (result==null) result = defaultValue.get(key);
+            return (T) result;
         }
     }
 

@@ -137,4 +137,19 @@ public class StringHandler {
         return array;
     }
 
+    /**
+     * 替换后缀名
+     *
+     * @param fileName  带后缀名的文件名
+     * @param extension 替换后的文件后缀名
+     * @return 替换了后缀名后的文件名
+     */
+    public static String replaceExtension(String fileName,String extension){
+        StringBuilder builder = new StringBuilder(fileName.length());
+        int indexOfDot = fileName.indexOf('.');
+        if (indexOfDot==-1)throw new IllegalArgumentException("找不到后缀名起始符号 \".\" ！");
+        builder.append(fileName,0,indexOfDot+1).append(extension);
+        return builder.toString();
+    }
+
 }
