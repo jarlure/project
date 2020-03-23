@@ -13,6 +13,10 @@ public class Bundle implements Savable {
     private HashMap<String, Object> data;
     private boolean dataChanged;
 
+    public boolean exist(Class type){
+        return exist(type.getSimpleName());
+    }
+
     public boolean exist(String name) {
         if (data == null || data.isEmpty()) return false;
         return data.containsKey(name);
@@ -30,10 +34,18 @@ public class Bundle implements Savable {
         return false;
     }
 
-    public void put(String name, Object data) {
+    public <T>T put(Class<T> type,T data){
+        return (T) put(type.getSimpleName(),data);
+    }
+
+    public Object put(String name, Object data) {
         if (this.data == null) this.data = new HashMap<>();
-        this.data.put(name, data);
         dataChanged=true;
+        return this.data.put(name, data);
+    }
+
+    public <T> T get(Class<T> clazz){
+        return get(clazz.getSimpleName());
     }
 
     public <T> T get(String name) {

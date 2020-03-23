@@ -21,7 +21,7 @@ dependencies {
     compileOnly "${jme3.g}:jme3-core:${jme3.v}"
     testRuntimeOnly "${jme3.g}:jme3-lwjgl:${jme3.v}"
     compileOnly "${jme3.g}:jme3-desktop:${jme3.v}"
-    compileOnly 'com.github.jarlure:ui:2.0.2'
+    compileOnly 'com.github.jarlure:ui:2.0.6'
     compileOnly "com.simsilica:zay-es:1.2.1"
 }
 

@@ -69,6 +69,7 @@ public class RecordState extends BaseAppState {
         if (isUndoDisabled()) return false;
         int index = checkIndex(pointer - 1);
         Record record = this.record[index];
+        if (record==null)return false;
         if (record.undo()){
             pointer = index;
             undoTime++;
@@ -96,6 +97,7 @@ public class RecordState extends BaseAppState {
         if (isRedoDisabled()) return false;
         int index = pointer;
         Record record = this.record[index];
+        if (record==null)return false;
         if (record.redo()){
             undoTime--;
             pointer = checkIndex(pointer + 1);

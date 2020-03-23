@@ -9,6 +9,9 @@ import com.jme3.export.Savable;
 import com.jme3.export.binary.BinaryExporter;
 import com.jme3.texture.Image;
 import com.jme3.util.IntMap;
+import com.simsilica.es.CreatedBy;
+import com.simsilica.es.EntityId;
+import com.simsilica.es.Name;
 
 import java.io.File;
 import java.io.IOException;
@@ -123,6 +126,15 @@ public class SavableHelper {
                 if (clazz.equals(char[].class)) return capsule.readString(name + VALUE, "").toCharArray();
                 if (clazz.equals(String[].class)) return capsule.readShortArray(name + VALUE, null);
                 if (clazz.equals(Savable[].class)) return capsule.readSavableArray(name + VALUE, null);
+                if (clazz.equals(boolean[][].class)) return capsule.readBooleanArray2D(name + VALUE,null);
+                if (clazz.equals(byte[][].class)) return capsule.readByteArray2D(name + VALUE,null);
+                if (clazz.equals(short[][].class)) return capsule.readShortArray2D(name + VALUE,null);
+                if (clazz.equals(int[][].class)) return capsule.readIntArray2D(name + VALUE,null);
+                if (clazz.equals(long[][].class)) return capsule.readLongArray2D(name + VALUE,null);
+                if (clazz.equals(float[][].class)) return capsule.readFloatArray2D(name + VALUE,null);
+                if (clazz.equals(double[][].class)) return capsule.readDoubleArray2D(name + VALUE,null);
+                if (clazz.equals(String[][].class)) return capsule.readStringArray2D(name + VALUE,null);
+                if (clazz.equals(Savable[][].class)) return capsule.readSavableArray2D(name + VALUE,null);
                 List list = new ArrayList();
                 while (true) {
                     StringBuilder builder = new StringBuilder(name.length() + VALUE.length() + 3);
@@ -208,7 +220,6 @@ public class SavableHelper {
             }
             //int
             else if (Integer.class.isAssignableFrom(clazz)) {
-//                return Integer.parseInt(capsule.readString(name+VALUE,"0"));
                 return capsule.readInt(name + VALUE, 0);
             }
             //long
@@ -222,6 +233,18 @@ public class SavableHelper {
             //double
             else if (Double.class.isAssignableFrom(clazz)) {
                 return capsule.readDouble(name + VALUE, 0);
+            }
+            //EntityId
+            else if (EntityId.class.isAssignableFrom(clazz)) {
+                return new EntityId(capsule.readLong(name+VALUE,0));
+            }
+            //Name
+            else if (Name.class.isAssignableFrom(clazz)) {
+                return new Name(capsule.readString(name+VALUE,null));
+            }
+            //CreatedBy
+            else if (CreatedBy.class.isAssignableFrom(clazz)){
+                return new CreatedBy(new EntityId(capsule.readLong(name+VALUE,0)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -245,6 +268,14 @@ public class SavableHelper {
                 else if (data instanceof char[]) capsule.write(new String((char[]) data), name + VALUE, null);
                 else if (data instanceof String[]) capsule.write((String[]) data, name + VALUE, null);
                 else if (data instanceof Savable[]) capsule.write((Savable[]) data, name + VALUE, null);
+                else if (data instanceof boolean[][]) capsule.write((boolean[][])data,name+VALUE,null);
+                else if (data instanceof byte[][]) capsule.write((byte[][])data,name+VALUE,null);
+                else if (data instanceof short[][]) capsule.write((short[][])data,name+VALUE,null);
+                else if (data instanceof int[][]) capsule.write((int[][])data,name+VALUE,null);
+                else if (data instanceof float[][]) capsule.write((float[][])data,name+VALUE,null);
+                else if (data instanceof double[][]) capsule.write((double[][])data,name+VALUE,null);
+                else if (data instanceof String[][]) capsule.write((String[][])data,name+VALUE,null);
+                else if (data instanceof Savable[][]) capsule.write((Savable[][])data,name+VALUE,null);
                 else {
                     int length = Array.getLength(data);
                     if (length > Byte.MAX_VALUE)
@@ -346,6 +377,18 @@ public class SavableHelper {
             //double
             else if (data instanceof Double) {
                 capsule.write((double) data, name + VALUE, 0);
+            }
+            //EntityId
+            else if (data instanceof EntityId) {
+                capsule.write(((EntityId) data).getId(), name + VALUE, 0);
+            }
+            //Name
+            else if (data instanceof Name){
+                capsule.write(((Name) data).getName(),name+VALUE,null);
+            }
+            //CreatedBy
+            else if (data instanceof CreatedBy) {
+                capsule.write(((CreatedBy) data).getCreatorId().getId(),name+VALUE,0);
             }
             //异常报告
             else LOG.log(Level.WARNING, "无法保存名为{0}值为{1}类型为{2}的数据！", new Object[]{name, data, data.getClass()});
