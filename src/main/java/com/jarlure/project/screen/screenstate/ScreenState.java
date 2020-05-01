@@ -19,16 +19,9 @@ public interface ScreenState {
      * 初始化ScreenState
      *
      * @param app    系统
-     * @param screen UI场景
+     * @param screen 界面状态
      */
     void initialize(Application app, Screen screen);
-
-    /**
-     * 设置布局。通常在这个方法里设置组件成员变量的引用
-     *
-     * @param layout 布局
-     */
-    void setLayout(Layout layout);
 
     /**
      * 判断当前ScreenState是否已启用
@@ -43,6 +36,13 @@ public interface ScreenState {
      * @param enabled true如果启用；false如果禁用
      */
     void setEnabled(boolean enabled);
+
+    /**
+     * 设置布局。通常在这个方法里设置组件成员变量的引用
+     *
+     * @param layout 界面布局
+     */
+    void setLayout(Layout layout);
 
     /**
      * 加载数据

@@ -309,6 +309,7 @@ public class SavableHelper {
                 int i = 0;
                 for (Object obj : ((Map) data).entrySet()) {
                     Map.Entry entry = (Map.Entry) obj;
+                    if (entry.getValue()==null)continue;//不保存值为null的情况，否则可能加载出错
                     StringBuilder builder = new StringBuilder(name.length() + KEY.length() + 3);
                     write(capsule, builder.append(name).append(KEY).append(i).toString(), entry.getKey());
                     builder = new StringBuilder(name.length() + VALUE.length() + 3);
@@ -323,6 +324,7 @@ public class SavableHelper {
                 Iterator<IntMap.Entry> it = ((IntMap) data).iterator();
                 while (it.hasNext()) {
                     IntMap.Entry entry = it.next();
+                    if (entry.getValue()==null)continue;//不保存值为null的情况，否则可能加载出错
                     StringBuilder builder = new StringBuilder(name.length() + KEY.length() + 3);
                     capsule.write(entry.getKey(), builder.append(name).append(KEY).append(i).toString(), 0);
                     builder = new StringBuilder(name.length() + VALUE.length() + 3);

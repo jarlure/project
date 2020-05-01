@@ -1,6 +1,7 @@
 package com.jarlure.project.screen.screenstate.operation;
 
 import com.jarlure.project.bean.Bundle;
+import com.jarlure.project.layout.Layout;
 
 public abstract class AbstractOperation implements Operation {
 
@@ -11,6 +12,11 @@ public abstract class AbstractOperation implements Operation {
 
     @Override
     public void onEnable() {
+
+    }
+
+    @Override
+    public void setLayout(Layout layout) {
 
     }
 

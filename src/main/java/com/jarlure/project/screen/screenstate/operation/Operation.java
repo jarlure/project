@@ -1,6 +1,7 @@
 package com.jarlure.project.screen.screenstate.operation;
 
 import com.jarlure.project.bean.Bundle;
+import com.jarlure.project.layout.Layout;
 
 public interface Operation {
 
@@ -13,6 +14,13 @@ public interface Operation {
      * 启用操作
      */
     void onEnable();
+
+    /**
+     * 设置布局
+     *
+     * @param layout 界面布局
+     */
+    void setLayout(Layout layout);
 
     /**
      * 加载数据

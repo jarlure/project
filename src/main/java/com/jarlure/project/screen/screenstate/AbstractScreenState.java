@@ -39,8 +39,12 @@ public abstract class AbstractScreenState implements ScreenState{
     }
 
     @Override
-    public void setLayout(Layout layout) {
-
+    public void cleanup() {
+        setEnabled(false);
+        initialized=false;
+        for (Operation operation:operations){
+            operation.cleanup();
+        }
     }
 
     @Override
@@ -63,17 +67,23 @@ public abstract class AbstractScreenState implements ScreenState{
         }
     }
 
-    @Override
-    public void loadData(Bundle bundle) {
+    protected void onDisable() {
         for (Operation operation:operations){
-            operation.loadData(bundle);
+            operation.onDisable();
         }
     }
 
     @Override
-    public void update(float tpf) {
+    public void setLayout(Layout layout) {
         for (Operation operation:operations){
-            operation.update(tpf);
+            operation.setLayout(layout);
+        }
+    }
+
+    @Override
+    public void loadData(Bundle bundle) {
+        for (Operation operation:operations){
+            operation.loadData(bundle);
         }
     }
 
@@ -84,18 +94,10 @@ public abstract class AbstractScreenState implements ScreenState{
         }
     }
 
-    protected void onDisable() {
-        for (Operation operation:operations){
-            operation.onDisable();
-        }
-    }
-
     @Override
-    public void cleanup() {
-        setEnabled(false);
-        initialized=false;
+    public void update(float tpf) {
         for (Operation operation:operations){
-            operation.cleanup();
+            operation.update(tpf);
         }
     }
 
